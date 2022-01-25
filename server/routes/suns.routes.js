@@ -21,7 +21,7 @@ router.get('/list/:category', (req, res) => {
 });
 
 // Get one sun by id
-router.get('/list/:category/:id', (req, res) => {
+router.get('/list/:id', (req, res) => {
 
 	const {id} = req.params;
 
