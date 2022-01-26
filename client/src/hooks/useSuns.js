@@ -23,7 +23,6 @@ export function useAllSuns(){
 
 export function useSunsByCategory(category){
 
-	
 	const [suns, setSuns] = useState({
 		sunsByCategory: [],
 		loading: true,
@@ -32,11 +31,29 @@ export function useSunsByCategory(category){
 	useEffect(() => {
 		mySunService.getSunsByCategory(`${category}`)
 			.then(suns => setSuns({
-				allSuns: suns.data,
+				sunsByCategory: suns.data,
 				loading: false,
 			}))
 			.catch(err => console.log(err));
 	}, [category]);
 
 	return {...suns};
+}
+
+export function useSunById(id){
+	const [sun, setSun] = useState({
+		sunById: [],
+		loading: true,
+	});
+	console.log("id en hook", id);
+	useEffect(() => {
+		mySunService.getSunById(id)
+			.then(sun => setSun({
+				sunById: [sun.data],
+				loading: false,
+			}))
+			.catch(err => console.log(err));
+	}, [id]);
+
+	return {...sun};
 }

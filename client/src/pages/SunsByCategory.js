@@ -6,14 +6,14 @@ function SunsByCategory() {
 
 	const category = useParams().category;
 
-	const { allSuns, loading } = useSunsByCategory(category);
+	const { sunsByCategory, loading } = useSunsByCategory(category);
 
 	return (
 		<div>
 			<h1>{`${category}`}s</h1>
 			{loading ? <h2>Loading...</h2> :
 				<>
-					<SunsList suns={allSuns} />
+					<SunsList suns={sunsByCategory} />
 				</>}
 		</div>
 	)

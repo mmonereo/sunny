@@ -19,7 +19,7 @@ class SunService {
 		return	this.axiosApp.get(`/list/${category}`)
 	});
 
-	getSunById = (id) => this.axiosApp.get(`/list/${id}`);
+	getSunById = (id) => this.axiosApp.get(`/details/${id}`);
 
 }
 
