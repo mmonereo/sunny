@@ -1,4 +1,4 @@
-import useAllSuns from "../hooks/useAllSuns";
+import {useAllSuns} from "../hooks/useSuns";
 import SunsList from "../components/SunsList";
 
 

@@ -3,7 +3,7 @@ import SunService from "../services/suns.service";
 
 const mySunService = new SunService();
 
-function useAllSuns(){
+export function useAllSuns(){
 	const [suns, setSuns] = useState({
 		allSuns: [],
 		loading: true,
@@ -21,4 +21,22 @@ function useAllSuns(){
 	return {...suns};
 }
 
-export default useAllSuns;
+export function useSunsByCategory(category){
+
+	
+	const [suns, setSuns] = useState({
+		sunsByCategory: [],
+		loading: true,
+	});
+
+	useEffect(() => {
+		mySunService.getSunsByCategory(`${category}`)
+			.then(suns => setSuns({
+				allSuns: suns.data,
+				loading: false,
+			}))
+			.catch(err => console.log(err));
+	}, [category]);
+
+	return {...suns};
+}

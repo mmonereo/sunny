@@ -10,7 +10,15 @@ class SunService {
 	}
 
 	getAllSuns = () => this.axiosApp.get('/list/all');
-	getSunsByCategory = (category) => this.axiosApp.get(`/list/${category}`);
+
+	getSunsByCategory = ((category) => {
+		if ((category !== 'sunrise') && (category !== 'sunset')){
+			return;
+		}
+
+		return	this.axiosApp.get(`/list/${category}`)
+	});
+
 	getSunById = (id) => this.axiosApp.get(`/list/${id}`);
 
 }
