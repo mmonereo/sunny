@@ -42,15 +42,15 @@ export function useSunsByCategory(category){
 
 export function useSunById(id){
 	const [sun, setSun] = useState({
-		sunById: [],
-		loading: true,
+		sunById: {},
+		loadingSunById: true,
 	});
-	console.log("id en hook", id);
+
 	useEffect(() => {
 		mySunService.getSunById(id)
 			.then(sun => setSun({
-				sunById: [sun.data],
-				loading: false,
+				sunById: sun.data,
+				loadingSunById: false,
 			}))
 			.catch(err => console.log(err));
 	}, [id]);

@@ -1,21 +1,24 @@
 import { useSunById } from "../hooks/useSuns";
 import { useParams } from "react-router-dom";
-import SunsList from "../components/SunsList";
+import SunCard from "../components/SunCard";
+import TimeWeather from "../components/TimeWeather";
+
+
 
 function SunDetails(){
 
 	const {id} = useParams();
 
-	const {sunById, loading} = useSunById(id);
+	const {sunById, loadingSunById} = useSunById(id);
 
-	console.log(sunById);
 
 	return (
 		<div>
-			<h1>sa</h1>
-			{loading ? <h2>Loading...</h2> :
+			<h1>Sun Details</h1>
+			{loadingSunById ? <h2>Loading...</h2> :
 				<>
-					<SunsList suns={sunById} />
+					<SunCard sun={sunById} />
+					<TimeWeather coordinates={sunById.location.coordinates} />
 				</>}
 		</div>
 	)
