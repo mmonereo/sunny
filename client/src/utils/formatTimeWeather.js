@@ -1,5 +1,4 @@
 
-
 // Get sunrise/sunset time from API raw data and format it
 function formatTime(data, category){
 
@@ -16,7 +15,7 @@ function hourlyIndex(formattedTime){
 	return hourlyIndex; 
 }
 
-// returns the weather info aand time for the given sunrise/sunset from the raw API data
+// returns the weather info and time for the given sunrise/sunset from the raw API data
 function formatTimeWeather(data, category){
 	const sunTime = formatTime(data, category);
 	const index = hourlyIndex(sunTime);
