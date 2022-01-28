@@ -18,7 +18,7 @@ function SunDetails(){
 			{loadingSunById ? <h2>Loading...</h2> :
 				<>
 					<SunCard sun={sunById} />
-					<TimeWeather coordinates={sunById.location.coordinates} />
+					<TimeWeather coordinates={sunById.location.coordinates} category={sunById.category} />
 				</>}
 		</div>
 	)
