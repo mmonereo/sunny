@@ -1,12 +1,12 @@
 import useCountDown from "../hooks/useCountDown";
 
-function Countdown ({sunTime}) {
+function Countdown ({sunDate}) {
 
-	const {countdown} = useCountDown(sunTime);
+	const {timeString} = useCountDown(sunDate);
 
 	return (
 		<div>
-			{countdown}
+			{timeString}
 		</div>
 	);
 }

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import TimeWeatherService from "../services/time-weather.service";
-import formatTimeWeather from "../utils/formatTimeWeather";
-
 const myTimeWeatherService = new TimeWeatherService();
 
-function useTimeWeather(latitude, longitude, category){
+function useTimeWeather(latitude, longitude){
 
 	const [timeWeather, setTimeWeather] = useState({
 		timeWeatherData: {},
@@ -13,11 +11,12 @@ function useTimeWeather(latitude, longitude, category){
 
 	useEffect(() => {
 		myTimeWeatherService.getTimeWeather(latitude, longitude )
-			.then(timeWeather => setTimeWeather({
-				timeWeatherData: formatTimeWeather(timeWeather.data, category),
-				loading: false,
+			.then(response => setTimeWeather({
+				timeWeatherData: response.data,
+				loadingTimeWeather: false,
 			}))
 			.catch(err => console.log(err));
+		console.log("TtimeWeathe useEffect");
 	}, []);
 
 	return {...timeWeather};
