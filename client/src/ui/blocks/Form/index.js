@@ -20,3 +20,5 @@ Form.FormElement = FormElement;
 Form.Group = Group;
 Form.Label = Label;
 Form.Input = Input;
+
+export default Form;

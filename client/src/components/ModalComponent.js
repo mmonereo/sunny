@@ -1,14 +1,14 @@
 import Modal from '../ui/blocks/Modal';
 
-function Modal ({closeModal, children}){
+function ModalComponent ({hideModal, children}){
 	return(
 		<Modal>
 			<Modal.Content>
-				<button onClick={closeModal}>X</button>
+				<button onClick={hideModal}>X</button>
 				{children}
 			</Modal.Content>
 		</Modal>
 	);
 }
 
-export default Modal;
+export default ModalComponent;
