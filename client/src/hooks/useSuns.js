@@ -53,7 +53,6 @@ export function useSunById(id){
 				loadingSunById: false,
 			}))
 			.catch(err => console.log(err));
-			console.log("sunbyID useEffect");
 	}, [id]);
 
 	return {...sun};

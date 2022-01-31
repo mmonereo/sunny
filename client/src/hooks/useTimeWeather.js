@@ -16,7 +16,6 @@ function useTimeWeather(latitude, longitude){
 				loadingTimeWeather: false,
 			}))
 			.catch(err => console.log(err));
-		console.log("TtimeWeathe useEffect");
 	}, [latitude, longitude]);
 
 	return {...timeWeather};

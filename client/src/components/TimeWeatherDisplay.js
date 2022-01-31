@@ -11,6 +11,8 @@ function TimeWeatherDisplay({timeWeatherData, category}){
 	return(
 		<div>
 			<p>hora del {category}: {sunTime}</p>
+			<p>temperatura: {temperature}</p>
+			<p>porcentaje de nubes: {cloudcover}</p>
 			<Countdown sunDate={sunDate} />
 		</div>
 	

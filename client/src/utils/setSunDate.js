@@ -29,7 +29,6 @@ function setSunDate(data, category) {
 	const hours = parseInt(formattedTime.slice(0, 2));
 	const minutes = parseInt(formattedTime.slice(3, 5));
 	const dateInfo = checkDayDate(hours, minutes);
-	console.log(typeof dateInfo.sunDate)
 	return dateInfo;
 }
 
