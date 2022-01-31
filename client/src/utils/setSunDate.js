@@ -12,7 +12,7 @@ function checkDayDate(hours, minutes) {
 	let today = new Date();
 
 	if (sunTime.getTime() < today.getTime()) {
-		dateInfo.sunDate = sunTime.setDate(sunTime.getDate() + 1);
+		dateInfo.sunDate = new Date(sunTime.getTime() + 86400000);
 		dateInfo.dayOffset = true;
 	}
 	else {
@@ -28,8 +28,9 @@ function setSunDate(data, category) {
 	let formattedTime = rawTime.substring(11);
 	const hours = parseInt(formattedTime.slice(0, 2));
 	const minutes = parseInt(formattedTime.slice(3, 5));
-	const sunDate = checkDayDate(hours, minutes);
-	return sunDate;
+	const dateInfo = checkDayDate(hours, minutes);
+	console.log(typeof dateInfo.sunDate)
+	return dateInfo;
 }
 
 export default setSunDate;
