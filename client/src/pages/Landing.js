@@ -1,22 +1,12 @@
-import ModalComponent from '../components/ModalComponent.js';
-import LoginForm from '../components/LoginForm';
-import useShowModal from '../hooks/useModal.js';
+import AuthNav from "../components/AuthNav";
 
 
 function Landing(){
 
-	const {showModal, displayModal, hideModal} = useShowModal();
-
-
-
 	return(
 		<div className="landing">
+			<AuthNav />
 			<h1>Welcome to the Suns</h1>
-			<button onClick={displayModal}>Login</button>
-			{showModal && 
-			<ModalComponent hideModal={hideModal}>
-				<LoginForm />
-			</ModalComponent>}
 		</div>
 	)
 }

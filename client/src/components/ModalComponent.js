@@ -1,13 +1,22 @@
 import Modal from '../ui/blocks/Modal';
+import ReactDom from 'react-dom';
 
-function ModalComponent ({hideModal, children}){
+const portalRoot = document.getElementById('portal-root');
+
+function ModalComponent({ showModal, hideModal, children}){
+
+	if (!showModal) return null;
+
 	return(
-		<Modal>
-			<Modal.Content>
-				<button onClick={hideModal}>X</button>
-				{children}
-			</Modal.Content>
-		</Modal>
+		ReactDom.createPortal(
+			<Modal>
+				<Modal.Content>
+					<button onClick={hideModal}>X</button>
+					{children}
+				</Modal.Content>
+			</Modal>,
+			portalRoot
+		)
 	);
 }
 

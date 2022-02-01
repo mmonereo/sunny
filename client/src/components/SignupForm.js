@@ -6,7 +6,7 @@ import AuthService from '../services/auth.service';
 
 const myAuthService = new AuthService();
 
-function LoginForm(){
+function SignupForm() {
 
 	const [form, setForm] = useState({
 		email: '',
@@ -17,19 +17,19 @@ function LoginForm(){
 
 	const navigate = useNavigate();
 
-	function handleChange(e){
-		const {name, value} = e.target;
+	function handleChange(e) {
+		const { name, value } = e.target;
 		setForm({
 			...form,
 			[name]: value
 		})
 	}
 
-	function handleSubmit(e){
+	function handleSubmit(e) {
 		e.preventDefault();
-		const {email, password} = form;
+		const { email, password } = form;
 
-		myAuthService.login(email, password)
+		myAuthService.signup(email, password)
 			.then(res => {
 				setUser(res.data);
 				navigate('/list/all');
@@ -37,19 +37,19 @@ function LoginForm(){
 			.catch(err => console.log(err));
 	}
 
-	return(
+	return (
 		<Form>
-			<Form.Title>Log In</Form.Title>
+			<Form.Title>Sign Up</Form.Title>
 			<Form.FormElement >
 
 				<Form.Group>
 					<Form.Label>Email</Form.Label>
-					<Form.Input type="email" name="email" placeholder="Email" onChange={handleChange}/>
+					<Form.Input type="email" name="email" placeholder="Email" onChange={handleChange} />
 				</Form.Group>
 
 				<Form.Group>
 					<Form.Label>Password</Form.Label>
-					<Form.Input type="password" name="password" current-password onChange={handleChange}/>
+					<Form.Input type="password" name="password" current-password onChange={handleChange} />
 				</Form.Group>
 
 			</Form.FormElement>
@@ -58,4 +58,4 @@ function LoginForm(){
 	)
 }
 
-export default LoginForm;
+export default SignupForm;
