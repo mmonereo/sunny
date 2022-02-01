@@ -13,6 +13,6 @@ const Modal = styled.div`
 	background-color: rgba(0,0,0,0.4); 
 `;
 
-Modal.content = Content;
+Modal.Content = Content;
 
 export default Modal;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Group = styled.form`
+const Group = styled.div`
 `;
 
 export default Group;

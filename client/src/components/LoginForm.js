@@ -28,6 +28,7 @@ function LoginForm(){
 	function handleSubmit(e){
 		e.preventDefault();
 		const {email, password} = form;
+		console.log("submitting form");
 		myAuthService.login(email, password)
 			.then(res => {
 				setUser(res.data);
@@ -40,7 +41,7 @@ function LoginForm(){
 	return(
 		<Form>
 			<Form.Title>Log In</Form.Title>
-			<Form.FormElement onSubmit={handleSubmit}>
+			<Form.FormElement >
 
 				<Form.Group>
 					<Form.Label>Email</Form.Label>
@@ -49,11 +50,11 @@ function LoginForm(){
 
 				<Form.Group>
 					<Form.Label>Password</Form.Label>
-					<Form.Input type="password" name="email" onChange={handleChange}/>
+					<Form.Input type="password" name="password" current-password onChange={handleChange}/>
 				</Form.Group>
 
 			</Form.FormElement>
-			<button type='submit'>Submit</button>
+			<input type='submit' value='Submit' onClick={handleSubmit} ></input>
 		</Form>
 	)
 }

@@ -14,7 +14,7 @@ function Landing(){
 			<h1>Welcome to the Suns</h1>
 			<button onClick={displayModal}>Login</button>
 			{showModal && 
-			<ModalComponent closeModal={hideModal}>
+			<ModalComponent hideModal={hideModal}>
 				<LoginForm />
 			</ModalComponent>}
 		</div>
