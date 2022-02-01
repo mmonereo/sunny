@@ -49,7 +49,7 @@ function LoginForm(){
 
 				<Form.Group>
 					<Form.Label>Password</Form.Label>
-					<Form.Input type="password" name="password" current-password onChange={handleChange}/>
+					<Form.Input type="password" name="password" autocomplete="on" onChange={handleChange}/>
 				</Form.Group>
 
 			</Form.FormElement>

@@ -10,7 +10,7 @@ const Nav = styled.nav`
 	align-items: center;
 	width: 100%;
 	height: 70px;
-	background-color: rgb(17, 16, 15, 0.30);
+	background-color: #FFBD9D;
 `;
 
 Nav.List = List;

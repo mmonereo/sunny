@@ -2,26 +2,38 @@ import Nav from "../ui/blocks/Nav";
 import ModalComponent from '../components/ModalComponent.js';
 import LoginForm from '../components/LoginForm';
 import SignupForm from "./SignupForm";
-import useShowModal from '../hooks/useShowModal.js';
+import { useState } from "react";
 
 function AuthNav(){
 
-	const { showModal, displayModal, hideModal } = useShowModal();
+	const [showModalLogin, setShowModalLogin] = useState(false);
+
+	const [showModalSignup, setShowModalSignup] = useState(false);
+
+
+	function toggleShowModalLogin(){
+		setShowModalLogin(!showModalLogin);
+	}
+
+	function toggleShowModalSignup(){
+		setShowModalSignup(!showModalSignup);
+	}
+
 
 	return(
 		<Nav>
 			<Nav.List>
 
 				<Nav.Item>
-					<Nav.Input onClick={displayModal} value="Login"/>
-					<ModalComponent hideModal={hideModal} showModal={showModal}>
+					<Nav.Input onClick={toggleShowModalLogin} value="Login" type="button"/>
+					<ModalComponent hideModal={toggleShowModalLogin} showModal={showModalLogin}>
 						<LoginForm />
 					</ModalComponent>
 				</Nav.Item>
 
 				<Nav.Item>
-					<Nav.Input onClick={displayModal} value="Signup" />
-					<ModalComponent hideModal={hideModal} showModal={showModal}>
+					<Nav.Input onClick={toggleShowModalSignup} value="Signup" type="button"/>
+					<ModalComponent hideModal={toggleShowModalSignup} showModal={showModalSignup}>
 						<SignupForm />
 					</ModalComponent>
 				</Nav.Item>

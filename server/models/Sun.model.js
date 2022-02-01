@@ -9,7 +9,7 @@ const sunSchema = new Schema(
 			maxlength: 50,
 		},
 
-		comment: {
+		description: {
 			type: String,
 			trim: true,
 			maxlength: 500,

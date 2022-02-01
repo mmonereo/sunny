@@ -1,6 +1,7 @@
 import { useSunsByCategory } from "../hooks/useSuns";
 import { useParams } from "react-router-dom";
 import SunsList from "../components/SunsList";
+import MainNav from "../components/MainNav";
 
 function SunsByCategory() {
 
@@ -10,6 +11,7 @@ function SunsByCategory() {
 
 	return (
 		<div>
+			<MainNav />
 			<h1>{`${category}`}s</h1>
 			{loading ? <h2>Loading...</h2> :
 				<>

@@ -2,6 +2,7 @@ import { useSunById } from "../hooks/useSuns";
 import { useParams } from "react-router-dom";
 import SunCard from "../components/SunCard";
 import TimeWeatherData from "../components/TimeWeatherData";
+import MainNav from "../components/MainNav";
 
 function SunDetails(){
 
@@ -12,6 +13,7 @@ function SunDetails(){
 
 	return (
 		<div>
+			<MainNav />
 			<h1>Sun Details</h1>
 			{loadingSunById ? <h2>Loading...</h2> :
 				<>

@@ -1,5 +1,6 @@
 import {useAllSuns} from "../hooks/useSuns";
 import SunsList from "../components/SunsList";
+import MainNav from "../components/MainNav";
 
 
 function AllSuns(){
@@ -11,6 +12,7 @@ function AllSuns(){
 
 	return(
 		<div>
+			<MainNav />
 			<h1>AllSuns</h1>
 			{ loading ? <h2>Loading...</h2>: 
 			<>

@@ -2,6 +2,9 @@ import setSunDate from "../utils/setSunDate";
 import formatTimeWeather from "../utils/formatTimeWeather";
 import Countdown from "./CountDown";
 
+// generates date object after cheking if the sun is today or tomorrow
+// then it gets the weather and time from the API raw response
+
 function TimeWeatherDisplay({timeWeatherData, category}){
 
 	const {sunDate, dayOffset} = setSunDate(timeWeatherData, category);

@@ -12,7 +12,8 @@ class AuthService{
 
 	signup = (email, password) => this.axiosApp.post('/signup', {email, password})
 	login = (email, password) => this.axiosApp.post('/login', {email, password})
-	isLoggedIn = () => this.axiosApp.get('/loggedin')
+	logout = () => this.axiosApp.get('/logout')
+	isLoggedIn = (user) => this.axiosApp.get('/loggedin', {user})
 }
 
 export default AuthService;

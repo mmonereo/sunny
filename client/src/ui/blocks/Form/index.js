@@ -5,6 +5,7 @@ import FormElement from "./FormElement";
 import Group from "./Group";
 import Label from "./Label";
 import Input from "./Input";
+import Select from "./Select";
 
 
 
@@ -20,5 +21,6 @@ Form.FormElement = FormElement;
 Form.Group = Group;
 Form.Label = Label;
 Form.Input = Input;
+Form.Select = Select;
 
 export default Form;
