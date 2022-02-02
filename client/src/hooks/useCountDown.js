@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 function useCountDown(sunDate){
 	
-	const [countdown, setCountdown] = useState(countdownSeconds(sunDate));
+	const [countdown, setCountdown] = useState(() => countdownSeconds(sunDate));
 	const [timeString, setTimeString] = useState('');
 
 	useEffect(() => {

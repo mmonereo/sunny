@@ -40,16 +40,21 @@ function MainNav(){
 					</NavLink>
 				</Nav.Item>
 
-				<Nav.Item>					
+				<Nav.Item>
 					<NavLink to="/list/sunset">
 							<Nav.Input value="Sunsets" type="button"/>
 					</NavLink>
 				</Nav.Item>
 
 				<Nav.Item>
-					<Nav.Input value="Logout" type="button" onClick={logoutOnClick}/>
+					<NavLink to="/new">
+							<Nav.Input value="New Sun" type="button"/>
+					</NavLink>
 				</Nav.Item>
 
+				<Nav.Item>
+					<Nav.Input value="Logout" type="button" onClick={logoutOnClick}/>
+				</Nav.Item>
 
 			</Nav.List>
 		</Nav>

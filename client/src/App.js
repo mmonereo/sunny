@@ -5,6 +5,7 @@ import AllSuns from './pages/AllSuns';
 import Landing from './pages/Landing';
 import SunsByCategory from './pages/SunsByCategory';
 import SunDetails from './pages/SunDetails';
+import NewSun from './pages/NewSun';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
 						<Route path="/list/all" element={<AllSuns />} />
 						<Route path="/list/:category" element={<SunsByCategory />} />
 						<Route path="/details/:id" element={<SunDetails />} />
+						<Route path="/new" element={<NewSun />} />
 					</Routes>
 				</UserContext.Provider>
 			</BrowserRouter>

@@ -6,6 +6,7 @@ import Group from "./Group";
 import Label from "./Label";
 import Input from "./Input";
 import Select from "./Select";
+import TextArea from "./TextArea";
 
 
 
@@ -22,5 +23,6 @@ Form.Group = Group;
 Form.Label = Label;
 Form.Input = Input;
 Form.Select = Select;
+Form.TextArea = TextArea;
 
 export default Form;
