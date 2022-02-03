@@ -1,6 +1,8 @@
 import Form from "../ui/blocks/Form";
 import { UserContext } from "../contexts/UserContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useCallback } from "react";
+import { Transition } from "react-transition-group";
+import Slide from "../ui/elements/Slide";
 import ButtonBig from "../ui/elements/ButtonBig";
 
 function NewSunForm(){
@@ -12,6 +14,13 @@ function NewSunForm(){
 		description: '',
 		category: 'sunset',
 	});
+
+	const [animate, setAnimate] = useState(false);
+
+	const doAnimate = useCallback(() => {
+		setAnimate(true);
+		setTimeout(() => setAnimate(false), 3000);
+	} , []);
 
 	function handleChange(e){
 		const {name, value} = e.target;
@@ -44,9 +53,18 @@ function NewSunForm(){
 				</Form.Group>
 
 				<Form.Group>
-					<Form.Label>Location</Form.Label>
-					<ButtonBig>Use an adress</ButtonBig>
-					<ButtonBig>Use my current location</ButtonBig>
+					<Transition
+						in={animate}
+						timeout={3000}
+						unmountOnEnter
+					>
+						{(state) => (<Slide state={state}>
+							<Form.Label>Location</Form.Label>
+							<ButtonBig onClick={doAnimate}>Use an adress</ButtonBig>
+							<ButtonBig>Use my current location</ButtonBig>
+						</Slide>)}
+
+					</Transition>
 				</Form.Group>
 
 
