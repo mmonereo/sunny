@@ -13,6 +13,10 @@ function NewSunForm(){
 		name: '',
 		description: '',
 		category: 'sunset',
+		street: '',
+		number: '',
+		city: '',
+		navigator: false
 	});
 
 	const [animate, setAnimate] = useState(false);
@@ -53,6 +57,11 @@ function NewSunForm(){
 				</Form.Group>
 
 				<Form.Group>
+					<Form.Label htmlFor="location">Location</Form.Label>
+					<Form.Input name="location" type="text" id="location" onChange={handleChange} />
+				</Form.Group>
+
+				<Form.Group>
 					<Transition
 						in={animate}
 						timeout={3000}
@@ -66,7 +75,21 @@ function NewSunForm(){
 
 					</Transition>
 				</Form.Group>
+			
+				<Form.Group>
+					<Form.Label htmlFor="street">Street</Form.Label>
+					<Form.Input name="street" type="text" id="street" onChange={handleChange} />
+				</Form.Group>
 
+				<Form.Group>
+					<Form.Label htmlFor="number">Number</Form.Label>
+					<Form.Input name="number" type="text" id="number" onChange={handleChange} />
+				</Form.Group>
+
+				<Form.Group>
+					<Form.Label htmlFor="number">City</Form.Label>
+					<Form.Input name="city" type="text" id="city" onChange={handleChange} />
+				</Form.Group>
 
 			</Form.FormElement>
 		</Form>
