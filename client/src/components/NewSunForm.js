@@ -1,9 +1,13 @@
 import Form from "../ui/blocks/Form";
 import { UserContext } from "../contexts/UserContext";
 import { useState, useContext, useCallback } from "react";
-import { Transition } from "react-transition-group";
+import GeoCodeService from "../services/geocode.service";
+/* import { Transition } from "react-transition-group";
 import Slide from "../ui/elements/Slide";
 import ButtonBig from "../ui/elements/ButtonBig";
+ */
+
+const myGeoCodeService = new GeoCodeService();
 
 function NewSunForm(){
 
@@ -21,10 +25,10 @@ function NewSunForm(){
 
 	const [animate, setAnimate] = useState(false);
 
-	const doAnimate = useCallback(() => {
+/* 	const doAnimate = useCallback(() => {
 		setAnimate(true);
 		setTimeout(() => setAnimate(false), 3000);
-	} , []);
+	} , []); */
 
 	function handleChange(e){
 		const {name, value} = e.target;
@@ -32,6 +36,18 @@ function NewSunForm(){
 			...form,
 			[name]: value
 		})
+	}
+
+	function geoCode(e){
+		e.preventDefault();
+		const address = `${form.street}${form.number}${form.city}`;
+		console.log("geoCode", address);
+		myGeoCodeService.getCoordinates(address)
+		.then(location => console.log("location", location))
+		.catch(err => console.log("err", err));
+
+
+	
 	}
 
 	return (
@@ -61,7 +77,7 @@ function NewSunForm(){
 					<Form.Input name="location" type="text" id="location" onChange={handleChange} />
 				</Form.Group>
 
-				<Form.Group>
+{/* 				CR <Form.Group>
 					<Transition
 						in={animate}
 						timeout={3000}
@@ -74,7 +90,7 @@ function NewSunForm(){
 						</Slide>)}
 
 					</Transition>
-				</Form.Group>
+				</Form.Group> */}
 			
 				<Form.Group>
 					<Form.Label htmlFor="street">Street</Form.Label>
@@ -90,6 +106,8 @@ function NewSunForm(){
 					<Form.Label htmlFor="number">City</Form.Label>
 					<Form.Input name="city" type="text" id="city" onChange={handleChange} />
 				</Form.Group>
+
+				<button type='button' onClick={geoCode}>geocode</button>
 
 			</Form.FormElement>
 		</Form>

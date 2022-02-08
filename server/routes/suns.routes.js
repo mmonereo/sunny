@@ -1,7 +1,9 @@
 const router = require("express").Router();
+const GeoCodeService = require("../services/geocode.service");
 const Sun = require("../models/Sun.model");
 const User = require("../models/User.model");
 
+const myGeoCodeService = new GeoCodeService();
 
 // Get every sun
 router.get('/list/all', (req, res) => {
@@ -29,6 +31,17 @@ router.get('/details/:id', (req, res) => {
 		.populate('creator')
 		.then((suns) => {res.status(200).json(suns)})
 		.catch((err) => res.status(500).json({ errMessage: 'Error getting one sun' }));
+})
+
+router.post('/new', (req, res) => {
+	const {name, description, category, street, number, city} = req.body;
+	const creator = req.session.currentUser._id;
+	const address = `${street} ${number} ${city}`;
+
+	myGeoCodeService.getCoordinates(address)
+		.then(location => Sun.create({name, description, category, location, address: {street, number, city}, creator}))
+		.then(sun => res.status(200).json(sun))
+		.catch(err => res.status(500).json({ errMessage: 'Error creating new sun' }));
 })
 
 
