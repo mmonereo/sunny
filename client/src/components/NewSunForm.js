@@ -1,13 +1,10 @@
 import Form from "../ui/blocks/Form";
 import { UserContext } from "../contexts/UserContext";
-import { useState, useContext, useCallback } from "react";
-import GeoCodeService from "../services/geocode.service";
+import { useState, useContext} from "react";
 /* import { Transition } from "react-transition-group";
 import Slide from "../ui/elements/Slide";
 import ButtonBig from "../ui/elements/ButtonBig";
  */
-
-const myGeoCodeService = new GeoCodeService();
 
 function NewSunForm(){
 
@@ -20,12 +17,12 @@ function NewSunForm(){
 		street: '',
 		number: '',
 		city: '',
-		navigator: false
+		geolocation: false
 	});
 
-	const [animate, setAnimate] = useState(false);
+/* 	const [animate, setAnimate] = useState(false);
 
-/* 	const doAnimate = useCallback(() => {
+	const doAnimate = useCallback(() => {
 		setAnimate(true);
 		setTimeout(() => setAnimate(false), 3000);
 	} , []); */
@@ -38,16 +35,18 @@ function NewSunForm(){
 		})
 	}
 
-	function geoCode(e){
-		e.preventDefault();
-		const address = `${form.street}${form.number}${form.city}`;
-		console.log("geoCode", address);
-		myGeoCodeService.getCoordinates(address)
-		.then(location => console.log("location", location))
-		.catch(err => console.log("err", err));
-
-
-	
+	function getBrowserGeolocation(){
+		if (!navigator.geolocation) {
+			console.log("Geolocation is not supported by your browser");
+		}
+		navigator.geolocation.getCurrentPosition((position) => {
+			const {latitude, longitude} = position.coords;
+			setForm({
+				...form,
+				coordinates: [latitude, longitude],
+				geolocation: true
+			});
+		});
 	}
 
 	return (
@@ -72,12 +71,12 @@ function NewSunForm(){
 					</Form.Select>
 				</Form.Group>
 
-				<Form.Group>
+{/* 				<Form.Group>
 					<Form.Label htmlFor="location">Location</Form.Label>
 					<Form.Input name="location" type="text" id="location" onChange={handleChange} />
 				</Form.Group>
 
-{/* 				CR <Form.Group>
+				CR <Form.Group>
 					<Transition
 						in={animate}
 						timeout={3000}
@@ -107,7 +106,7 @@ function NewSunForm(){
 					<Form.Input name="city" type="text" id="city" onChange={handleChange} />
 				</Form.Group>
 
-				<button type='button' onClick={geoCode}>geocode</button>
+				<button type="button" onClick={getBrowserGeolocation}>use current location</button>
 
 			</Form.FormElement>
 		</Form>
